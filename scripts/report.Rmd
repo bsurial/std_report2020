@@ -174,6 +174,3 @@ incidence_hiv %>%
   labs(y = "Inzidenz pro 100'000 Einwohner\n", 
        title = "CH: Incidence of new HIV cases, per 100'000")
 ```
-
-```
-

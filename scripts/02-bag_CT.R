@@ -53,7 +53,7 @@ incidence_sex_ct <- tables[[4]] %>%
   as_tibble(rownames = "year") %>% 
   select(-2) %>% 
   mutate(std = "Chlamydia") %>% 
-  mutate(metrci = "Inzidenz pro 100'000") %>% 
+  mutate(metric = "Inzidenz pro 100'000") %>% 
   mutate(year = as.numeric(str_remove(year, "\\*")))
 
 

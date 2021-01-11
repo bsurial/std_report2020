@@ -51,7 +51,7 @@ cases_sex_syphilis <- tables[[3]] %>%
 # Syphilis (Früh) Inzidenz nach Geschlecht, pro Jahr
 rownames(tables[[4]]) <- tables[[4]][,1]
 
-incidence_sex_ngo <- tables[[4]] %>% 
+incidence_sex_syphilis <- tables[[4]] %>% 
   select(-1) %>% 
   t() %>% 
   as_tibble(rownames = "year") %>% 
