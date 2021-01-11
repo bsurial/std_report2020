@@ -3,8 +3,8 @@ title: "STD Daten 2020"
 author: "Bernard Surial"
 date: "`r format(lubridate::today(), '%d. %B %Y')`"
 output:
-  html_document: default
   github_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -58,7 +58,7 @@ cases_graph <- function(df, text_distance = -750) {
     ) +
     scale_y_continuous(labels = scales::comma_format(big.mark = "'")) + 
     labs(x = "\nCalendar year", 
-       caption = "Source: Bundesamt für Gesundheit")
+       caption = "Source: Bundesamt für Gesundheit, Stand 5.1.21")
 }
 ```
 
@@ -84,7 +84,7 @@ df %>%
   expand_limits(y = 0)  + 
   scale_color_manual(values = c("firebrick", "darkgreen")) + 
   labs(linetype = "Gender", x = "\nCalendar year", 
-       caption = "Source: Bundesamt für Gesundheit")
+       caption = "Source: Bundesamt für Gesundheit, Stand 5.1.21")
 }
 ```
 

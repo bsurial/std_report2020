@@ -26,5 +26,3 @@ Bernard Surial
 ![](report_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->
 
 ![](report_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
-
-\`\`\`
