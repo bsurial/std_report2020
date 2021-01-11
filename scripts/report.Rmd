@@ -111,6 +111,16 @@ cases_sex_graph(cases_sex_ct, 300) +
 ```
 
 
+```{r}
+incidence_ct %>% 
+  mutate(value = as.numeric(value)) %>% 
+  cases_graph(5) + 
+  labs(y = "Inzidenz pro 100'000 Einwohner\n", 
+       title = "CH: Incidence of new C. trachomatis cases, per 100'000")
+```
+
+
+
 # Gonokokken
 
 ```{r}
@@ -118,7 +128,7 @@ cases_ngo %>%
   mutate(value = as.numeric(value)) %>% 
   cases_graph(text_distance = -200) +
   labs(
-    y = "No. of new N. gonorhoeae cases",
+    y = "No. of new N. gonorhoeae cases\n",
     title = "CH: Number of N. gonorrhoeae cases")
 ```
 
@@ -127,6 +137,15 @@ cases_sex_graph(cases_sex_ngo, 200) +
     labs(y = "No. of new N. gonorrhoeae cases\n",
     title = "CH: Number of N. gonorrhoeae cases (by gender)"
   ) 
+```
+
+
+```{r}
+incidence_ngo %>% 
+  mutate(value = as.numeric(value)) %>% 
+  cases_graph(2) + 
+  labs(y = "Inzidenz pro 100'000 Einwohner\n", 
+       title = "CH: Incidence of new N. gonorrhoeae cases, per 100'000")
 ```
 
 
@@ -146,5 +165,15 @@ cases_sex_hiv %>%
   cases_sex_graph(-5) + 
   labs(y = "No. of new HIV cases\n", 
        title = "CH: Number of new HIV cases (by gender)")
+```
+
+```{r}
+incidence_hiv %>% 
+  mutate(value = as.numeric(value)) %>% 
+  cases_graph(0.2) + 
+  labs(y = "Inzidenz pro 100'000 Einwohner\n", 
+       title = "CH: Incidence of new HIV cases, per 100'000")
+```
+
 ```
 
