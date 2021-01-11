@@ -3,8 +3,8 @@ title: "STD Daten 2020"
 author: "Bernard Surial"
 date: "`r format(lubridate::today(), '%d. %B %Y')`"
 output:
-  github_document: default
   html_document: default
+  github_document: default
 ---
 
 ```{r setup, include=FALSE}
