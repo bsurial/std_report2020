@@ -127,16 +127,16 @@ full18_19 <- bind_rows(
 
 # Data from 2020 (new Berda)
 
-ct2020 <- read_delim(here("daten", "berda2020", "ergebnis-des-chlamydient.csv"), delim = ";") %>% 
+ct2020 <- read_delim(here("daten", "ergebnis-des-chlamydient.csv"), delim = ";") %>% 
   rename(date = 1)
 
-ngo2020 <- read_delim(here("daten", "berda2020", "ergebnis-des-gonorrhoe-t.csv"), delim = ";") %>% 
+ngo2020 <- read_delim(here("daten", "ergebnis-des-gonorrhoe-t.csv"), delim = ";") %>% 
   rename(date = 1)
 
-hiv2020 <- read_delim(here("daten", "berda2020", "ergebnis-des-hiv-laborte.csv"), delim = ";") %>% 
+hiv2020 <- read_delim(here("daten", "ergebnis-des-hiv-laborte.csv"), delim = ";") %>% 
   rename(date = 1)
 
-n_clients2020 <- read_delim(here("daten", "berda2020", "gendersex.csv"), delim = ";") %>% 
+n_clients2020 <- read_delim(here("daten", "gendersex.csv"), delim = ";") %>% 
   janitor::clean_names() %>% 
   rename(date = 1) %>% 
   pivot_longer(-1) %>% 

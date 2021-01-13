@@ -18,6 +18,7 @@ source(here("scripts", "01-bag_HIV.R"))
 source(here("scripts", "02-bag_CT.R"))
 source(here("scripts", "03-bag_NGO.R"))
 source(here("scripts", "04-bag_syphilis.R"))
+source(here("scripts", "05-teststelle.R"))
 
 theme_set(theme_light(base_family = "Roboto") + 
             theme(panel.grid.minor.x = element_blank(),
@@ -174,3 +175,43 @@ incidence_hiv %>%
   labs(y = "Inzidenz pro 100'000 Einwohner\n", 
        title = "CH: Incidence of new HIV cases, per 100'000")
 ```
+
+
+
+# Daten der Teststelle
+
+```{r}
+full %>% 
+  mutate(year = factor(year)) %>% 
+  ggplot(aes(x = month, y = Total)) +
+  geom_line(aes(group = year, color = year)) + 
+  facet_wrap(~test, nrow = 2) + 
+  geom_point(aes(color = year)) + 
+  # scale_color_manual(values = c("grey80", "firebrick")) + 
+  theme(strip.background = element_blank(), 
+        strip.text = element_text(color = "black", face = "bold"))  + 
+  scale_color_brewer(palette = 7) + 
+  labs(title = "Teststelle Insel: Anzahl Tests", 
+       x = "", 
+       y = "Anzahl Tests") + 
+  theme(panel.grid.major.x = element_blank())
+```
+
+
+```{r}
+full %>% 
+  mutate(year = factor(year)) %>% 
+  ggplot(aes(x = month, y = pos_rate_per100)) +
+  geom_line(aes(group = year, color = year)) + 
+  facet_wrap(~test, nrow = 2) + 
+  geom_point(aes(color = year)) + 
+  # scale_color_manual(values = c("grey80", "firebrick")) + 
+  theme(strip.background = element_blank(), 
+        strip.text = element_text(color = "black", face = "bold"))  + 
+  scale_color_brewer(palette = 7) + 
+  labs(title = "Teststelle Insel: Positive Resultate pro 100 Tests", 
+       x = "", 
+       y = "Pos. Rate pro 100 Tests") + 
+  theme(panel.grid.major.x = element_blank())
+```
+

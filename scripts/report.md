@@ -26,3 +26,9 @@ Bernard Surial
 ![](report_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->
 
 ![](report_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
+
+# Daten der Teststelle
+
+![](report_files/figure-gfm/unnamed-chunk-12-1.png)<!-- -->
+
+![](report_files/figure-gfm/unnamed-chunk-13-1.png)<!-- -->
