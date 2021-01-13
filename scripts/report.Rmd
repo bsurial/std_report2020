@@ -157,7 +157,7 @@ cases_hiv %>%
   cases_graph(text_distance = -15) + 
   labs(x = "\nCalendar Year", y = "No. of new HIV cases\n",
     title = "CH: Number of new HIV cases",
-    caption = "Source: Bundesamt für Gesundheit")
+    caption = "Source: Bundesamt für Gesundheit") 
 ```
 
 ```{r}
