@@ -1,7 +1,7 @@
 STD Daten 2020
 ================
 Bernard Surial
-11\. Januar 2021
+13\. Januar 2021
 
 # Chlamydien
 
