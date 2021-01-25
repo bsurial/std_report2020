@@ -1,0 +1,56 @@
+---
+title: "STD Daten 2020"
+author: "Bernard Surial"
+date: "`r format(lubridate::today(), '%d. %B %Y')`"
+output:
+  github_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE,
+                      dpi = 300)
+```
+
+# Chlamydien
+
+```{r}
+readd(ct_plot_cases)
+
+readd(ct_plot_incidence)
+
+readd(ct_plot_cases_sex)
+```
+
+
+
+# Gonokokken
+
+```{r}
+readd(ngo_plot_cases)
+
+readd(ngo_plot_incidence)
+
+readd(ngo_plot_cases_sex)
+```
+
+
+
+# HIV
+
+```{r}
+readd(hiv_plot_cases)
+
+readd(hiv_plot_incidence)
+
+readd(hiv_plot_cases_sex)
+```
+
+
+
+# Daten der Teststelle
+
+```{r}
+readd(berda_graph_cases)
+
+readd(berda_graph_incidence)
+```
