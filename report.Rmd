@@ -50,7 +50,7 @@ readd(hiv_plot_cases_sex)
 # Daten der Teststelle
 
 ```{r}
-readd(berda_graph_cases)
+readd(berda_graph_tests)
 
-readd(berda_graph_incidence)
+readd(berda_graph_cases)
 ```

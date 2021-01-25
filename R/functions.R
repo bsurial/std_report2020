@@ -272,20 +272,21 @@ graph_teststelle_cases <- function(df) {
           plot.caption = element_text(face = "italic"))
 } 
 
-graph_teststelle_incidence <- function(df) {
+graph_teststelle_anzahltests <- function(df) {
   df %>% 
     mutate(year = factor(year)) %>%
-    ggplot(aes(x = month, y = pos_rate_per100)) +
+    filter(test == "Chlamydien") %>% 
+    ggplot(aes(x = month, y = Total)) +
     geom_line(aes(group = year, color = year)) +
-    facet_wrap(~test, nrow = 2) +
     geom_point(aes(color = year)) +
     # scale_color_manual(values = c("grey80", "firebrick")) +
     theme(strip.background = element_blank(),
           strip.text = element_text(color = "black", face = "bold"))  +
     scale_color_brewer(palette = 7) +
-    labs(title = "Teststelle Insel: Positive Resultate pro 100 Tests",
+    labs(title = "Teststelle Insel: Anzahl Chlamydien/Gonokokken Tests",
          x = "",
-         y = "Pos. Rate pro 100 Tests") +
+         y = "Pos. Rate pro 100 Tests", 
+         color = "Calendar year") +
     theme_light(base_family = "Roboto") + 
     theme(panel.grid.minor.x = element_blank(),
           panel.grid.major.x = element_blank(),

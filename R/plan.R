@@ -89,8 +89,8 @@ plan <- drake_plan(
   berda_graph_cases = get_berda_data() %>% 
     graph_teststelle_cases(),
   
-  berda_graph_incidence = get_berda_data() %>% 
-    graph_teststelle_incidence(),
+  berda_graph_tests = get_berda_data() %>% 
+    graph_teststelle_anzahltests(),
   
   report = rmarkdown::render(
     knitr_in("report.Rmd"),
