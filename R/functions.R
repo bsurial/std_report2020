@@ -305,11 +305,12 @@ graph_teststelle_visits <- function(df) {
     summarise(Total = sum(Total)) %>% 
     ggplot(aes(x = year, y = Total)) + 
     geom_col() +
-    geom_text(aes(y = Total + 100, label = scales::comma(Total, big.mark = "'")), 
+    geom_text(aes(y = Total + 100, 
+                  label = scales::comma(Total, big.mark = "'")), 
               family = "Roboto") + 
     scale_y_continuous(limits = c(0, 2500)) + 
     labs(x = "Calendar year\n", 
-         y = "\nNumber of visits", 
+         y = "\nNumber of visit", 
          title = "Teststelle Insel: Anzahl Besuche pro Jahr") + 
     theme_light(base_family = "Roboto") + 
     theme(panel.grid.minor.x = element_blank(),
