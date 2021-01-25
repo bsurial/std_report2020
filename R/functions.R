@@ -304,6 +304,7 @@ graph_teststelle_visits <- function(df) {
     group_by(year) %>% 
     summarise(Total = sum(Total)) %>% 
     ggplot(aes(x = year, y = Total)) + 
+    geom_col() +
     geom_text(aes(y = Total + 100, label = scales::comma(Total, big.mark = "'")), 
               family = "Roboto") + 
     scale_y_continuous(limits = c(0, 2500)) + 
