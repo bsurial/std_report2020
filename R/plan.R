@@ -86,6 +86,9 @@ plan <- drake_plan(
     cases_sex_graph(text_distance = -3, incidence = TRUE),
   
   # BERDA Daten
+  berda_graph_visits = get_berda_data() %>% 
+    graph_teststelle_visits(),
+  
   berda_graph_cases = get_berda_data() %>% 
     graph_teststelle_cases(),
   

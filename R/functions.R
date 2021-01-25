@@ -296,3 +296,27 @@ graph_teststelle_anzahltests <- function(df) {
           plot.title = element_text(face = "bold"),
           plot.caption = element_text(face = "italic"))
 }  
+
+
+graph_teststelle_visits <- function(df) {
+  df %>% 
+    filter(test == "Chlamydien") %>% 
+    group_by(year) %>% 
+    summarise(Total = sum(Total)) %>% 
+    ggplot(aes(x = year, y = Total)) + 
+    geom_col() + 
+    geom_text(aes(y = Total + 100, label = scales::comma(Total, big.mark = "'")), 
+              family = "Roboto") + 
+    scale_y_continuous(limits = c(0, 2500)) + 
+    labs(x = "Calendar year\n", 
+         y = "\nNumber of visits", 
+         title = "Teststelle Insel: Anzahl Besuche pro Jahr") + 
+    theme_light(base_family = "Roboto") + 
+    theme(panel.grid.minor.x = element_blank(),
+          panel.grid.major.x = element_blank(),
+          strip.background = element_blank(), 
+          strip.text = element_text(color = "black", face = "bold"),
+          plot.title.position = "panel", 
+          plot.title = element_text(face = "bold"),
+          plot.caption = element_text(face = "italic"))
+}

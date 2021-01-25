@@ -17,4 +17,4 @@ Bernard Surial
 
 # Daten der Teststelle
 
-![](report_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->![](report_files/figure-gfm/unnamed-chunk-4-2.png)<!-- -->
+![](report_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->![](report_files/figure-gfm/unnamed-chunk-4-2.png)<!-- -->![](report_files/figure-gfm/unnamed-chunk-4-3.png)<!-- -->
