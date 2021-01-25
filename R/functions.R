@@ -261,7 +261,7 @@ graph_teststelle_cases <- function(df) {
     scale_color_brewer(palette = 7) +
     labs(title = "Teststelle Insel: Positive Resultate pro 100 Tests",
          x = "",
-         y = "Pos. Rate pro 100 Tests") +
+         y = "Pos. Rate pro 100 Tests\n") +
     theme_light(base_family = "Roboto") + 
     theme(panel.grid.minor.x = element_blank(),
           panel.grid.major.x = element_blank(),
@@ -285,8 +285,8 @@ graph_teststelle_anzahltests <- function(df) {
     scale_color_brewer(palette = 7) +
     labs(title = "Teststelle Insel: Anzahl Chlamydien/Gonokokken Tests",
          x = "",
-         y = "Pos. Rate pro 100 Tests", 
-         color = "Calendar year") +
+         y = "Pos. Rate pro 100 Tests\n", 
+         color = "\nCalendar year") +
     theme_light(base_family = "Roboto") + 
     theme(panel.grid.minor.x = element_blank(),
           panel.grid.major.x = element_blank(),
