@@ -5,20 +5,20 @@ Bernard Surial
 
 # Chlamydien
 
-![](report_files/figure-gfm/unnamed-chunk-1-1.png)<!-- -->![](report_files/figure-gfm/unnamed-chunk-1-2.png)<!-- -->![](report_files/figure-gfm/unnamed-chunk-1-3.png)<!-- -->
+![](report_files/figure-gfm/chlam-1.png)<!-- -->![](report_files/figure-gfm/chlam-2.png)<!-- -->![](report_files/figure-gfm/chlam-3.png)<!-- -->
 
 # Gonokokken
 
-![](report_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->![](report_files/figure-gfm/unnamed-chunk-2-2.png)<!-- -->![](report_files/figure-gfm/unnamed-chunk-2-3.png)<!-- -->
+![](report_files/figure-gfm/gono-1.png)<!-- -->![](report_files/figure-gfm/gono-2.png)<!-- -->![](report_files/figure-gfm/gono-3.png)<!-- -->
 
 # HIV
 
-![](report_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->![](report_files/figure-gfm/unnamed-chunk-3-2.png)<!-- -->![](report_files/figure-gfm/unnamed-chunk-3-3.png)<!-- -->
+![](report_files/figure-gfm/hiv-1.png)<!-- -->![](report_files/figure-gfm/hiv-2.png)<!-- -->![](report_files/figure-gfm/hiv-3.png)<!-- -->
 
 # Syphilis
 
-![](report_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->![](report_files/figure-gfm/unnamed-chunk-4-2.png)<!-- -->![](report_files/figure-gfm/unnamed-chunk-4-3.png)<!-- -->
+![](report_files/figure-gfm/syph-1.png)<!-- -->![](report_files/figure-gfm/syph-2.png)<!-- -->![](report_files/figure-gfm/syph-3.png)<!-- -->
 
 # Daten der Teststelle
 
-![](report_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->![](report_files/figure-gfm/unnamed-chunk-5-2.png)<!-- -->![](report_files/figure-gfm/unnamed-chunk-5-3.png)<!-- -->
+![](report_files/figure-gfm/teststelle-1.png)<!-- -->![](report_files/figure-gfm/teststelle-2.png)<!-- -->![](report_files/figure-gfm/teststelle-3.png)<!-- -->
