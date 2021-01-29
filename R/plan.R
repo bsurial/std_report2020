@@ -7,7 +7,7 @@ plan <- drake_plan(
   ngo = 
     "https://www.bag.admin.ch/bag/de/home/zahlen-und-statistiken/zahlen-zu-infektionskrankheiten.exturl.html/aHR0cHM6Ly9tZWxkZXN5c3RlbWUuYmFnYXBwcy5jaC9pbmZyZX/BvcnRpbmcvZGF0ZW5kZXRhaWxzL2QvZ29ub3JyaG9lLmh0bWw_/d2ViZ3JhYj1pZ25vcmU=.html",
   syph = 
-    "https://www.bag.admin.ch/bag/de/home/zahlen-und-statistiken/zahlen-zu-infektionskrankheiten.exturl.html/aHR0cHM6Ly9tZWxkZXN5c3RlbWUuYmFnYXBwcy5jaC9pbmZyZX/BvcnRpbmcvZGF0ZW5kZXRhaWxzL2Qvc3lwaF9mcnVlaC5odG1s/P3dlYmdyYWI9aWdub3Jl.html",
+    "https://www.bag.admin.ch/bag/de/home/zahlen-und-statistiken/zahlen-zu-infektionskrankheiten.exturl.html/aHR0cHM6Ly9tZWxkZXN5c3RlbWUuYmFnYXBwcy5jaC9pbmZyZX/BvcnRpbmcvZGF0ZW5kZXRhaWxzL2Qvc3lwaGlsaXMuaHRtbD93/ZWJncmFiPWlnbm9yZQ==.html",
   
   
   # HIV
@@ -71,15 +71,15 @@ plan <- drake_plan(
   
   syph_plot_cases = create_overall_table(syph_data[[1]], 
                                         std = "Syphilis") %>% 
-    cases_graph(text_distance = -200, incidence = FALSE), 
+    cases_graph(text_distance = -100, incidence = FALSE), 
   
   syph_plot_incidence = create_overall_table(syph_data[[2]], 
                                             std = "Syphilis") %>% 
-    cases_graph(text_distance = -3, incidence = TRUE),
+    cases_graph(text_distance = -1.5, incidence = TRUE),
   
   syph_plot_cases_sex = create_sex_table(syph_data[[3]], 
                                         std = "Syphilis") %>% 
-    cases_sex_graph(text_distance = -100, incidence = FALSE),
+    cases_sex_graph(text_distance = -75, incidence = FALSE),
   
   syph_plot_incidence_sex = create_sex_table(syph_data[[4]], 
                                             std = "Syphilis") %>% 

@@ -15,6 +15,8 @@ Bernard Surial
 
 ![](report_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->![](report_files/figure-gfm/unnamed-chunk-3-2.png)<!-- -->![](report_files/figure-gfm/unnamed-chunk-3-3.png)<!-- -->
 
+# Syphilis
+
 ![](report_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->![](report_files/figure-gfm/unnamed-chunk-4-2.png)<!-- -->![](report_files/figure-gfm/unnamed-chunk-4-3.png)<!-- -->
 
 # Daten der Teststelle
