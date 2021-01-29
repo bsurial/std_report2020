@@ -45,6 +45,13 @@ readd(hiv_plot_incidence)
 readd(hiv_plot_cases_sex)
 ```
 
+```{r}
+readd(syph_plot_cases)
+readd(syph_plot_incidence)
+readd(syph_plot_cases_sex)
+```
+
+
 
 
 # Daten der Teststelle

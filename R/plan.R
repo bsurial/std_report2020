@@ -83,7 +83,7 @@ plan <- drake_plan(
   
   syph_plot_incidence_sex = create_sex_table(syph_data[[4]], 
                                             std = "Syphilis") %>% 
-    cases_sex_graph(text_distance = -3, incidence = TRUE),
+    cases_sex_graph(text_distance = -1.5, incidence = TRUE),
   
   # BERDA Daten
   berda_graph_visits = get_berda_data() %>% 
