@@ -95,6 +95,13 @@ plan <- drake_plan(
   berda_graph_tests = get_berda_data() %>% 
     graph_teststelle_anzahltests(),
   
+  pos_chlam = get_berda_data() %>% 
+    pos_test_bars(test = "Chlamydien"),
+  
+  pos_gono = get_berda_data() %>% 
+    pos_test_bars(test = "Gonokokken"),
+  
+  
   report = rmarkdown::render(
     knitr_in("report.Rmd"),
     output_file = file_out("report.md"),

@@ -321,3 +321,27 @@ graph_teststelle_visits <- function(df) {
           plot.title = element_text(face = "bold"),
           plot.caption = element_text(face = "italic"))
 }
+
+pos_test_bars <- function(df, test) {
+  df %>% 
+    filter(test == test) %>% 
+    ggplot(aes(x = month, y = pos)) + 
+    geom_col() + 
+    facet_wrap(~year, nrow = 1) + 
+    # scale_color_manual(values = c("grey80", "firebrick")) +
+    theme(strip.background = element_blank(),
+          strip.text = element_text(color = "black", face = "bold"))  +
+    scale_color_brewer(palette = 7) +
+    labs(title = glue("Teststelle Insel: Positive {test} Tests"),
+         x = "",
+         y = "Anzahl positive Tests\n", 
+         color = "\nCalendar year") +
+    theme_light(base_family = "Roboto") + 
+    theme(panel.grid.minor.x = element_blank(),
+          panel.grid.major.x = element_blank(),
+          strip.background = element_blank(), 
+          strip.text = element_text(color = "black", face = "bold"),
+          plot.title.position = "panel", 
+          plot.title = element_text(face = "bold"),
+          plot.caption = element_text(face = "italic"))
+}

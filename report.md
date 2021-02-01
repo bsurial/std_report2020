@@ -21,4 +21,4 @@ Bernard Surial
 
 # Daten der Teststelle
 
-![](report_files/figure-gfm/teststelle-1.png)<!-- -->![](report_files/figure-gfm/teststelle-2.png)<!-- -->![](report_files/figure-gfm/teststelle-3.png)<!-- -->
+![](report_files/figure-gfm/teststelle-1.png)<!-- -->![](report_files/figure-gfm/teststelle-2.png)<!-- -->![](report_files/figure-gfm/teststelle-3.png)<!-- -->![](report_files/figure-gfm/teststelle-4.png)<!-- -->![](report_files/figure-gfm/teststelle-5.png)<!-- -->
