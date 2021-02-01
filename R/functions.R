@@ -285,7 +285,7 @@ graph_teststelle_anzahltests <- function(df) {
     scale_color_brewer(palette = 7) +
     labs(title = "Teststelle Insel: Anzahl Chlamydien/Gonokokken Tests",
          x = "",
-         y = "Pos. Rate pro 100 Tests\n", 
+         y = "Anzahl Tests pro Monat\n", 
          color = "\nCalendar year") +
     theme_light(base_family = "Roboto") + 
     theme(panel.grid.minor.x = element_blank(),
