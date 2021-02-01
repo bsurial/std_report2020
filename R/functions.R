@@ -324,7 +324,7 @@ graph_teststelle_visits <- function(df) {
 
 pos_test_bars <- function(df, test) {
   df %>% 
-    filter(test == test) %>% 
+    filter(test == {{ test }}) %>% 
     ggplot(aes(x = month, y = pos)) + 
     geom_col() + 
     facet_wrap(~year, nrow = 1) + 
@@ -332,7 +332,7 @@ pos_test_bars <- function(df, test) {
     theme(strip.background = element_blank(),
           strip.text = element_text(color = "black", face = "bold"))  +
     scale_color_brewer(palette = 7) +
-    labs(title = glue("Teststelle Insel: Positive {test} Tests"),
+    labs(title = glue("Teststelle Insel: Positive Gonokokken Tests"),
          x = "",
          y = "Anzahl positive Tests\n", 
          color = "\nCalendar year") +
@@ -345,3 +345,4 @@ pos_test_bars <- function(df, test) {
           plot.title = element_text(face = "bold"),
           plot.caption = element_text(face = "italic"))
 }
+
