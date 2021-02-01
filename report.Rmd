@@ -68,8 +68,12 @@ readd(berda_graph_visits)
 readd(berda_graph_tests)
 
 readd(berda_graph_cases)
+```
 
+
+```{r teststelle2, fig.width=10}
 readd(pos_chlam)
 
 readd(pos_gono)
 ```
+
