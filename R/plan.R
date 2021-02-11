@@ -109,6 +109,16 @@ plan <- drake_plan(
   ifik_ct_plot = ifik_ct_data %>% ifik_plot(title = "Chlamydia trachomatis"),
   ifik_ngo_plot = ifik_ngo_data %>% ifik_plot(title = "Neisseria gonorrhea"),
   
+  ifik_ct_year_cases_plot = ifik_ct_data %>% 
+    ifik_year_cases_plot(title = "Chlamydia trachomatis"),
+  ifik_ct_year_rate_plot = ifik_ct_data %>% 
+    ifik_year_rate_plot(title = "Chlamydia trachomatis"),
+  
+  ifik_ngo_year_cases_plot = ifik_ngo_data %>% 
+    ifik_year_cases_plot(title = "Neisseria gonorrhea"),
+  ifik_ngo_year_rate_plot = ifik_ngo_data %>% 
+    ifik_year_rate_plot(title = "Neisseria gonorrhea"),
+  
   report = rmarkdown::render(
     knitr_in("report.Rmd"),
     output_file = file_out("report.md"),

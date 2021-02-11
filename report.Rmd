@@ -90,3 +90,15 @@ readd(ifik_ct_plot)
 readd(ifik_ngo_plot)
 ```
 
+
+```{r}
+readd(ifik_ct_year_cases_plot)
+readd(ifik_ct_year_rate_plot)
+```
+
+
+```{r}
+readd(ifik_ngo_year_cases_plot)
+readd(ifik_ngo_year_rate_plot)
+```
+

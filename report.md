@@ -30,3 +30,7 @@ Bernard Surial
 ![](report_files/figure-gfm/ifik-CT-1.png)<!-- -->
 
 ![](report_files/figure-gfm/ifik-NGO-1.png)<!-- -->
+
+![](report_files/figure-gfm/unnamed-chunk-1-1.png)<!-- -->![](report_files/figure-gfm/unnamed-chunk-1-2.png)<!-- -->
+
+![](report_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->![](report_files/figure-gfm/unnamed-chunk-2-2.png)<!-- -->

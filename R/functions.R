@@ -486,3 +486,70 @@ ifik_plot <- function(df, title) {
   plot1 + plot2 &
     plot_annotation(caption = "Swabs from Frauenklinik excluded.")
 }
+
+
+# Yearly data on no. of cases and positivity rate
+# No of tests:
+ifik_year_cases_plot <- function(df, title) {
+  df %>% 
+    mutate(year = year(period)) %>% 
+    group_by(year) %>% 
+    summarise(cases = sum(positiv), 
+              total = sum(total)) %>% 
+    mutate(p_rate = cases/total) %>% 
+    mutate(pct_change = (cases - lag(cases)) / lag(cases), 
+           pct_change_ft = scales::percent(pct_change, accuracy = 0.1)) %>% 
+    ggplot(aes(x = year, y = cases)) + 
+    geom_text(aes(x = year + 0.1, label = pct_change_ft, 
+                  y = cases -5, color = pct_change >= 0),
+              family = "Roboto", size = 3, show.legend = FALSE) +
+    geom_line() + 
+    geom_point(aes(color = pct_change >= 0),
+               show.legend = FALSE,
+               size = 2) + 
+    expand_limits(y = 0) +
+    scale_color_manual(values = c("firebrick", "darkgreen")) +
+    labs(x = "\nCalendar year", 
+         y = "No. of positive cases",
+         title = glue("**{title}**, no. of positive cases"),
+         caption = "Source: Data from IFIK") +
+    theme_light(base_family = "Roboto") + 
+    theme(panel.grid.minor.x = element_blank(),
+          plot.title.position = "panel", 
+          plot.title = element_markdown(face = "plain"),
+          plot.caption = element_text(face = "italic"))
+}
+
+
+# Positivity rate:
+ifik_year_rate_plot <- function(df, title) {
+  df %>% 
+    mutate(year = year(period)) %>% 
+    group_by(year) %>% 
+    summarise(cases = sum(positiv), 
+              total = sum(total)) %>% 
+    mutate(p_rate = cases/total) %>% 
+    mutate(pct_change = (cases - lag(cases)) / lag(cases), 
+           pct_change_ft = scales::percent(pct_change, accuracy = 0.1)) %>% 
+    mutate(pct_change_rate = (p_rate - lag(p_rate)) / lag(p_rate), 
+           pct_change_rate_ft = scales::percent(pct_change_rate, accuracy = 0.1)) %>% 
+    ggplot(aes(x = year, y = p_rate * 100)) + 
+    geom_text(aes(x = year + 0.1, label = pct_change_rate_ft, 
+                  y = p_rate*100-0.15, color = pct_change_rate >= 0),
+              family = "Roboto", size = 3, show.legend = FALSE) +
+    geom_line() + 
+    geom_point(aes(color = pct_change_rate >= 0),
+               show.legend = FALSE,
+               size = 2) + 
+    expand_limits(y = 0) +
+    scale_color_manual(values = c("firebrick", "darkgreen")) +
+    labs(x = "\nCalendar year", 
+         y = "Positive cases per 100 tests",
+         title = glue("**{title}**, positive cases per 100 tests"),
+         caption = "Source: Data from IFIK") +
+    theme_light(base_family = "Roboto") + 
+    theme(panel.grid.minor.x = element_blank(),
+          plot.title.position = "panel", 
+          plot.title = element_markdown(face = "plain"),
+          plot.caption = element_text(face = "italic"))
+}
