@@ -332,7 +332,7 @@ pos_test_bars <- function(df, test) {
     theme(strip.background = element_blank(),
           strip.text = element_text(color = "black", face = "bold"))  +
     scale_color_brewer(palette = 7) +
-    labs(title = glue("Teststelle Insel: Positive Gonokokken Tests"),
+    labs(title = glue("Teststelle Insel: Positive {test} Tests"),
          x = "",
          y = "Anzahl positive Tests\n", 
          color = "\nCalendar year") +
