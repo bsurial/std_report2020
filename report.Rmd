@@ -77,3 +77,16 @@ readd(pos_chlam)
 readd(pos_gono)
 ```
 
+
+
+
+# Daten vom IFIK
+
+```{r ifik-CT, fig.height=8}
+readd(ifik_ct_plot)
+```
+
+```{r ifik-NGO, fig.height=8}
+readd(ifik_ngo_plot)
+```
+

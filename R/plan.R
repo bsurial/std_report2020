@@ -102,6 +102,13 @@ plan <- drake_plan(
     pos_test_bars(test = "Gonokokken"),
   
   
+  # IFIK Daten
+  ifik_ct_data = ifik("ct"), 
+  ifik_ngo_data = ifik("ngo"),
+  
+  ifik_ct_plot = ifik_ct_data %>% ifik_plot(title = "Chlamydia trachomatis"),
+  ifik_ngo_plot = ifik_ngo_data %>% ifik_plot(title = "Neisseria gonorrhea"),
+  
   report = rmarkdown::render(
     knitr_in("report.Rmd"),
     output_file = file_out("report.md"),

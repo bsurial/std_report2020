@@ -346,3 +346,143 @@ pos_test_bars <- function(df, test) {
           plot.caption = element_text(face = "italic"))
 }
 
+
+
+# IFIK data ---------------------------------------------------------------
+
+# Function to read IFIK files
+
+ifik_file <- function(excel) {
+  readxl::read_excel(excel, 
+                     sheet = 2) %>% 
+    janitor::clean_names() %>% 
+    mutate(datum = as.Date(datum)) %>% 
+    mutate(resultat = factor(resultat, 
+                             levels = c("positiv", "negativ")))
+}
+
+
+# Read data from IFIK and parse it
+
+ifik <- function(std) {
+  # Check Input
+  if(!std %in% c("ct", "ngo")) {
+    stop(glue::glue("Value of std must be 'ct' or 'ngo', not '{std}'"))
+  }
+  
+  # Read file
+  ct <- ifik_file(here("daten", glue::glue("ifik-{std}-pcr-2015-2020.xlsx")))
+  
+  # Frauenklinik makes a lot of screenings -> remove them
+  ct_subset <- ct %>% 
+    filter(!(str_detect(einsender, "Frauen")))
+  
+  # Aggregate results by month
+  ct_monthly <- ct_subset %>% 
+    mutate(period = floor_date(datum, "month")) %>% 
+    group_by(period) %>% 
+    count(resultat) %>% 
+    filter(!is.na(resultat)) %>% 
+    pivot_wider(names_from = resultat, values_from = n, values_fill = 0) %>% 
+    mutate(total = positiv + negativ, 
+           p_rate = positiv/total)
+  
+  # Calculate average of Years 2015 - 2019
+  ct_avg_monthly <- ct_monthly %>% 
+    mutate(year = year(period), 
+           month = month(period)) %>% 
+    filter(year != 2020) %>% 
+    group_by(month) %>% 
+    summarise(avg_p_rate = mean(p_rate), 
+              avg_total = mean(total), 
+              min_p_rate = min(p_rate), 
+              max_p_rate = max(p_rate), 
+              min_total = min(total),
+              max_total = max(total))
+  
+  # Join them together
+  ct_monthly <- ct_monthly %>% 
+    mutate(month = month(period)) %>% 
+    left_join(ct_avg_monthly)
+  
+  ct_monthly
+}
+
+
+
+ifik_test_plot <- function(df, title) {
+  df %>% 
+    ggplot(aes(x = period, y = total)) + 
+    geom_ribbon(aes(ymax = max_total, 
+                    ymin = min_total),
+                fill = "grey80", alpha = 0.3) +
+    geom_line(aes(y = max_total), 
+              color = "grey30", size = 0.11) + 
+    geom_line(aes(y = min_total), 
+              color = "grey30", size = 0.11) + 
+    geom_line(aes(x = period, y = avg_total), 
+              size = 0.75, color = "firebrick") + 
+    geom_col(fill = "grey80",
+             color = "black", alpha = 0.6, 
+             width = 15) +
+    # scale_y_continuous(breaks = c(0, 2, 4, 6)) +
+    facet_wrap(~year(period), scales = "free_x", 
+               ncol = 1) + 
+    theme(panel.grid.major.x = element_blank(), 
+          panel.grid.minor.x = element_blank(), 
+          strip.text = element_text(face = "bold", 
+                                    hjust = 0.95, 
+                                    size = 12)) + 
+    labs(x = NULL, y = "**No. of tests performed**, n", 
+         title = glue("**{title}**, results from IFIK Bern"),
+         subtitle = "<span style='color: firebrick'>**Mean no. of tests** (line)</span> and <span style='color: grey30'>**range** (ribbon)</span> from 2015 - 2019 </span>")
+}
+
+
+ifik_rate_plot <-function(df) {
+  df %>% 
+    ggplot(aes(x = period, y = p_rate*100)) + 
+    geom_ribbon(aes(ymax = max_p_rate * 100, 
+                    ymin = min_p_rate * 100),
+                fill = "grey80", alpha = 0.3) +
+    geom_line(aes(y = max_p_rate*100), 
+              color = "grey30", size = 0.11) + 
+    geom_line(aes(y = min_p_rate*100), 
+              color = "grey30", size = 0.11) + 
+    geom_line(aes(x = period, y = avg_p_rate * 100), 
+              size = 0.75, color = "firebrick") + 
+    geom_col(fill = "grey80",
+             color = "black", alpha = 0.6, 
+             width = 15) +
+    scale_y_continuous(breaks = c(0, 2, 4, 6)) +
+    facet_wrap(~year(period), scales = "free_x", 
+               ncol = 1) + 
+    theme(panel.grid.major.x = element_blank(), 
+          panel.grid.minor.x = element_blank(), 
+          strip.text = element_text(face = "bold", 
+                                    hjust = 0.95, 
+                                    size = 12)) + 
+    labs(x = NULL, y = "**Test positivity rate**, per 100 tests", 
+         subtitle = "<span style='color: firebrick'>**Mean rate** (line)</span> and <span style='color: grey30'>**range** (ribbon)</span> from 2015 - 2019 </span>")
+}
+
+# Combine plots
+ifik_plot <- function(df, title) {
+  plot1 <- ifik_test_plot(df, title = title)
+  plot2 <- ifik_rate_plot(df)
+  
+  theme_set(theme_minimal(base_family = "Open Sans"))
+  theme_update(plot.title = element_markdown(face = "plain", 
+                                             size = 18, 
+                                             margin = margin(b = 4, unit = "mm")),
+               plot.subtitle = element_markdown(face = "plain", 
+                                                size = 8, color = "grey30", 
+                                                lineheight = 1.24),
+               axis.title.y = element_markdown(margin = margin(r = 4, 
+                                                               unit = "mm")),
+               axis.title.x = element_markdown(margin = margin(t = 4, 
+                                                               unit = "mm")))
+  
+  plot1 + plot2 &
+    plot_annotation(caption = "Swabs from Frauenklinik excluded.")
+}

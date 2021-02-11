@@ -1,7 +1,7 @@
 STD Daten 2020
 ================
 Bernard Surial
-01\. Februar 2021
+11. Februar 2021
 
 # Chlamydien
 
@@ -24,3 +24,9 @@ Bernard Surial
 ![](report_files/figure-gfm/teststelle-1.png)<!-- -->![](report_files/figure-gfm/teststelle-2.png)<!-- -->![](report_files/figure-gfm/teststelle-3.png)<!-- -->
 
 ![](report_files/figure-gfm/teststelle2-1.png)<!-- -->![](report_files/figure-gfm/teststelle2-2.png)<!-- -->
+
+# Daten vom IFIK
+
+![](report_files/figure-gfm/ifik-CT-1.png)<!-- -->
+
+![](report_files/figure-gfm/ifik-NGO-1.png)<!-- -->
