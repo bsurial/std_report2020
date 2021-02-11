@@ -425,7 +425,7 @@ ifik_test_plot <- function(df, title) {
     geom_col(fill = "grey80",
              color = "black", alpha = 0.6, 
              width = 15) +
-    # scale_y_continuous(breaks = c(0, 2, 4, 6)) +
+    scale_x_date(date_labels = "%b") +
     facet_wrap(~year(period), scales = "free_x", 
                ncol = 1) + 
     theme(panel.grid.major.x = element_blank(), 
@@ -454,7 +454,7 @@ ifik_rate_plot <-function(df) {
     geom_col(fill = "grey80",
              color = "black", alpha = 0.6, 
              width = 15) +
-    scale_y_continuous(breaks = c(0, 2, 4, 6)) +
+    scale_x_date(date_labels = "%b") +
     facet_wrap(~year(period), scales = "free_x", 
                ncol = 1) + 
     theme(panel.grid.major.x = element_blank(), 
