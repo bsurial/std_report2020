@@ -60,7 +60,7 @@ readd(syph_plot_cases_sex)
 
 
 
-# Daten der Teststelle
+# Daten der Anonymen Teststelle
 
 ```{r teststelle}
 readd(berda_graph_visits)

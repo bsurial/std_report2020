@@ -19,7 +19,7 @@ Bernard Surial
 
 ![](report_files/figure-gfm/syph-1.png)<!-- -->![](report_files/figure-gfm/syph-2.png)<!-- -->![](report_files/figure-gfm/syph-3.png)<!-- -->
 
-# Daten der Teststelle
+# Daten der Anonymen Teststelle
 
 ![](report_files/figure-gfm/teststelle-1.png)<!-- -->![](report_files/figure-gfm/teststelle-2.png)<!-- -->![](report_files/figure-gfm/teststelle-3.png)<!-- -->
 
