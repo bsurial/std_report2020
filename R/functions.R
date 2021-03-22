@@ -132,13 +132,20 @@ cases_sex_graph <- function(df, incidence = FALSE, text_distance) {
 # Data from 2018-2019 and 2020
 get_berda_data <- function() {
   
-  result <- readxl::read_excel(here("daten", "berda_2018_2019.xlsx"), range = "HP1:HQ10056") %>% 
+  result1 <- readxl::read_excel(here("daten", "berda_2018_2019.xlsx"), 
+                                range = "HP1:HQ10056") %>% 
     janitor::clean_names()
   
-  date <- readxl::read_excel(here("daten", "berda_2018_2019.xlsx"), range = "B1:C10056") %>% 
+  result2 <- readxl::read_excel(here("daten", "berda_2018_2019.xlsx"), 
+                                range = "HJ1:HJ10056") %>% 
     janitor::clean_names()
   
-  all18_19 <- bind_cols(date, result) %>% 
+  date <- readxl::read_excel(here("daten", "berda_2018_2019.xlsx"), 
+                             range = "B1:C10056") %>% 
+    janitor::clean_names()
+  
+  all18_19 <- bind_cols(date, result1, result2) %>% 
+    rename(resultat_hiv_test = bestatigtes_resultat_hiv_test) %>% 
     filter(!is.na(vct_interner_code)) %>% 
     mutate(year = year(erstellt_datum),
            month = month(erstellt_datum, label = TRUE, abbr = TRUE)) %>%
@@ -150,8 +157,11 @@ get_berda_data <- function() {
       resultat_chlamydien_test = case_when(
         str_detect(resultat_chlamydien_test, "Negativ") ~ "Negativ", 
         str_detect(resultat_chlamydien_test, "Positiv") ~ "Positiv", 
-      )
-    )
+      ),
+      resultat_hiv_test = case_when(
+        str_detect(resultat_hiv_test, "Negativ") ~ "Negativ", 
+        str_detect(resultat_hiv_test, "Positiv") ~ "Positiv", 
+      ))
   
   gono18_19 <- all18_19 %>% 
     group_by(year, month) %>% 
@@ -162,6 +172,12 @@ get_berda_data <- function() {
                 values_fill = 0) %>% 
     mutate(Total = Negativ + Positiv,
            pos_rate_per100 = Positiv/Total * 100)
+  
+  names(gono18_19) <- c("year", "month", "neg", "pos", "Total", "pos_rate_per100")
+  
+  gono18_19 <- gono18_19 %>% 
+    mutate(test = "Gonokokken") %>% 
+    relocate(pos, .before = neg)
   
   
   ct_18_19 <- all18_19 %>% 
@@ -181,16 +197,30 @@ get_berda_data <- function() {
     relocate(pos, .before = neg)
   
   
+  hiv_18_19 <- all18_19 %>% 
+    group_by(year, month) %>% 
+    count(resultat_hiv_test) %>% 
+    filter(!is.na(resultat_hiv_test)) %>% 
+    pivot_wider(names_from = resultat_hiv_test, 
+                values_from = n, 
+                values_fill = 0) %>% 
+    mutate(Total = Negativ + Positiv,
+           pos_rate_per100 = Positiv/Total * 100) %>% 
+    ungroup()
   
-  names(gono18_19) <- c("year", "month", "neg", "pos", "Total", "pos_rate_per100")
   
-  gono18_19 <- gono18_19 %>% 
-    mutate(test = "Gonokokken") %>% 
+  names(hiv_18_19) <- c("year", "month", "neg", "pos", "Total", "pos_rate_per100")
+  
+  hiv_18_19 <- hiv_18_19 %>%   
+    mutate(test = "HIV") %>% 
     relocate(pos, .before = neg)
+  
+  
   
   full18_19 <- bind_rows(
     ct_18_19, 
-    gono18_19
+    gono18_19, 
+    hiv_18_19
   )
   
   # Data from 2020 (new Berda)
@@ -234,9 +264,21 @@ get_berda_data <- function() {
     mutate(test = "Gonokokken") %>% 
     filter(year == 2020)
   
+  hiv2020 <- hiv2020 %>% 
+    mutate(month = month(date, label = T, abbr = T),
+           year = year(date)) %>% 
+    group_by(year, month) %>% 
+    summarise(pos = sum(Positiv), 
+              neg = sum(Negativ)) %>% 
+    mutate(Total = pos + neg, 
+           pos_rate_per100 = pos / Total * 100) %>% 
+    mutate(test = "HIV") %>% 
+    filter(year == 2020)
+  
   
   full2020 <- ct2020 %>% 
-    bind_rows(ngo2020)
+    bind_rows(ngo2020) %>% 
+    bind_rows(hiv2020)
   
   
   full <- bind_rows(
