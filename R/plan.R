@@ -90,16 +90,26 @@ plan <- drake_plan(
     graph_teststelle_visits(),
   
   berda_graph_cases = get_berda_data() %>% 
+    filter(test != "HIV") %>% 
     graph_teststelle_cases(),
   
-  berda_graph_tests = get_berda_data() %>% 
-    graph_teststelle_anzahltests(),
+  berda_graph_tests_ctgono = get_berda_data() %>% 
+    filter(test == "Chlamydien") %>% 
+    graph_teststelle_anzahltests(title = "Chlamydien/Gonokokken"),
+  
+  berda_graph_tests_hiv = get_berda_data() %>% 
+    filter(test == "HIV") %>% 
+    graph_teststelle_anzahltests(title = "HIV"),
   
   pos_chlam = get_berda_data() %>% 
     pos_test_bars(test = "Chlamydien"),
   
   pos_gono = get_berda_data() %>% 
     pos_test_bars(test = "Gonokokken"),
+  
+  pos_hiv = get_berda_data() %>% 
+    pos_test_bars(test = "HIV") +
+    scale_y_continuous(breaks = c(0, 1, 2)),
   
   
   # IFIK Daten

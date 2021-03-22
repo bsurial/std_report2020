@@ -314,10 +314,10 @@ graph_teststelle_cases <- function(df) {
           plot.caption = element_text(face = "italic"))
 } 
 
-graph_teststelle_anzahltests <- function(df) {
+graph_teststelle_anzahltests <- function(df, title) {
   df %>% 
+    ungroup() %>% 
     mutate(year = factor(year)) %>%
-    filter(test == "Chlamydien") %>% 
     ggplot(aes(x = month, y = Total)) +
     geom_line(aes(group = year, color = year)) +
     geom_point(aes(color = year)) +
@@ -325,7 +325,7 @@ graph_teststelle_anzahltests <- function(df) {
     theme(strip.background = element_blank(),
           strip.text = element_text(color = "black", face = "bold"))  +
     scale_color_brewer(palette = 7) +
-    labs(title = "Teststelle Insel: Anzahl Chlamydien/Gonokokken Tests",
+    labs(title = glue("Teststelle Insel: Anzahl {title} Tests"),
          x = "",
          y = "Anzahl Tests pro Monat\n", 
          color = "\nCalendar year") +

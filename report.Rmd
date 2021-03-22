@@ -65,7 +65,9 @@ readd(syph_plot_cases_sex)
 ```{r teststelle}
 readd(berda_graph_visits)
 
-readd(berda_graph_tests)
+readd(berda_graph_tests_ctgono)
+
+readd(berda_graph_tests_hiv)
 
 readd(berda_graph_cases)
 ```
@@ -75,6 +77,8 @@ readd(berda_graph_cases)
 readd(pos_chlam)
 
 readd(pos_gono)
+
+readd(pos_hiv)
 ```
 
 
